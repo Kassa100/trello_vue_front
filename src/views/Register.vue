@@ -5,13 +5,14 @@
     <div class="section-wrapper">
       <div class="account-form">
         <h1>注册 Trello</h1>
-        <form id="login-form" method="POST">
+        <form id="login-form" method="POST" @submit.prevent="registerSubmit()">
           <div>
             <label>
               <input
                 class="form-field"
                 autofocus="autofocus"
                 placeholder="输入用户名"
+                v-model="user.name"
               />
             </label>
           </div>
@@ -21,6 +22,7 @@
                 type="password"
                 class="form-field"
                 placeholder="输入密码"
+                v-model="user.password"
               />
             </label>
           </div>
@@ -30,6 +32,7 @@
                 type="password"
                 class="form-field"
                 placeholder="再次确认密码"
+                v-model="user.rePassword"
               />
             </label>
           </div>
@@ -46,10 +49,26 @@
 
 <script>
 export default {
+  name: "Register",
   data() {
-    return {};
+    return {
+      user: {
+        name: "",
+        password: "",
+        rePassword: "",
+      },
+    };
   },
-  methods: {},
+  methods: {
+    registerSubmit() {
+      if (this.user.name.trim() === "" || this.user.password.trim() === "") {
+        return this.$message.error("用户名和密码不能为空");
+      }
+      if (this.user.password !== this.user.rePassword) {
+        return this.$message.error("两次输入的密码不一致");
+      }
+    },
+  },
   mounted() {},
 };
 </script>
