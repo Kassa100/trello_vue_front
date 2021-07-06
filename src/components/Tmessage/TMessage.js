@@ -56,7 +56,6 @@ Message.close = function(instance) {
 };
 
 ["info", "success", "error", "warning"].forEach((type) => {
-  console.log(type);
   Message[type] = function(data) {
     if (typeof data === "string") {
       data = {

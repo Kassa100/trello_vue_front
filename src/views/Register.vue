@@ -39,7 +39,7 @@
           <div>
             <input type="submit" class="btn btn-success" value="注册" />
             <span class="signin-signup-separator">或者</span>
-            <input type="button" class="btn" value="登录" />
+            <router-link :to="{ name: 'Login' }" class="btn">登录</router-link>
           </div>
         </form>
       </div>
@@ -67,6 +67,13 @@ export default {
       if (this.user.password !== this.user.rePassword) {
         return this.$message.error("两次输入的密码不一致");
       }
+      try {
+        this.$store.dispatch("user/register", {
+          ...this.user,
+        });
+        this.$message.success("注册成功");
+        this.$router.push({ name: "Login" });
+      } catch (e) {}
     },
   },
   mounted() {},
