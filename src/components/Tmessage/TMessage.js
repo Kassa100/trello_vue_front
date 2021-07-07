@@ -63,7 +63,6 @@ Message.close = function(instance) {
       };
     }
     data.type = type;
-    console.log(data);
     return Message(data);
   };
 });
