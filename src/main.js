@@ -1,14 +1,17 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-import "@/assets/css/css.css";
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import TMessage from '@/components/TMessage/TMessage.js';
 
-import TMessage from "@/components/Tmessage/TMessage.js";
-Vue.config.productionTip = false;
+import '@/assets/css/css.css'
+
+Vue.config.productionTip = false
+
 Vue.prototype.$message = TMessage;
+
 new Vue({
   router,
   store,
-  render: (h) => h(App),
-}).$mount("#app");
+  render: h => h(App)
+}).$mount('#app')
